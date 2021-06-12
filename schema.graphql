@@ -1,0 +1,119 @@
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+enum AdditionalService {
+  Commissions
+  FormattingChanges
+}
+
+enum ArtMedium {
+  Digital
+  GraphicDesign
+  Lettering
+  Patterns
+  Photography
+  Watercolor
+}
+
+enum ArtOccasion {
+  Christmas
+  Halloween
+  Thanksgiving
+}
+
+enum ArtTheme {
+  Animals
+  Plants
+}
+
+enum ArtType {
+  DigitalArt
+  Experimental
+  GraphicDesign
+  Lettering
+  Murals
+  Patterns
+  Photography
+  Sculpture
+  Traditional
+  Watercolor
+}
+
+type Photo {
+  id: ID!
+  downloadUrl: String!
+  firebasePath: String!
+  height: Int!
+  width: Int!
+}
+
+type PortfolioCollection {
+  id: ID!
+  name: String!
+  portfolioPieces: [PortfolioPiece!]!
+}
+
+type PortfolioPiece {
+  id: ID!
+  artMedium: ArtMedium
+  artOccasion: ArtOccasion
+  artTheme: ArtTheme
+  description: String!
+  isPublished: Boolean!
+  order: Int!
+  orderForSection: Int
+  tags: [String!]!
+  title: String!
+}
+
+type PortfolioSection {
+  id: ID!
+  name: String!
+  portfolioPieces: [PortfolioPiece!]!
+}
+
+type Query {
+  viewer: Viewer
+}
+
+type SocialLinks {
+  facebook: String
+  instagram: String
+  linkedIn: String
+  twitter: String
+}
+
+enum UserGroup {
+  Artist
+  Company
+}
+
+type Viewer {
+  id: ID!
+  additionalServices: [AdditionalService!]!
+  artTypes: [ArtType!]!
+  artistStatement: String!
+  displayName: String!
+  email: String!
+  onboardingStep: Int
+  portfolioCode: String!
+  portfolioCollections: [PortfolioCollection!]!
+  portfolioPieces: [PortfolioPiece!]!
+  portfolioSections: [PortfolioSection!]!
+  profilePhoto: Photo
+  socialLinks: SocialLinks!
+  userGroup: UserGroup!
+  username: String
+  verified: Boolean!
+  visibility: Visibility!
+}
+
+enum Visibility {
+  Hidden
+  Private
+  Public
+}
+
