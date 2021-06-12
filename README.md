@@ -1,1 +1,1 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+Note: this code assumes you have a GraphQL server running at http://localhost:4000/graphql. It also assumes the GraphQL schema has a certain shape.
